@@ -9,8 +9,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
     <link rel="stylesheet" href="/dist/ounce.min.css"><!-- to generate this style run `$ npm start` -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/src/js/ounce.js"></script>
   </head>
   <body>
+    <header class="auto-hide-header">
+      <div class="logo"><a href="#0"><img src="img/logo.svg" alt="Logo"></a></div>
+
+      <nav class="primary-nav">
+        <a href="#navigation" class="nav-trigger">
+          <span>
+            <em aria-hidden="true"></em>
+            Menu
+          </span>
+        </a> <!-- .nav-trigger -->
+
+        <ul id="navigation">
+          <li><a href="#0">The team</a></li>
+          <li><a href="#0">Our Products</a></li>
+          <li><a href="#0">Our Services</a></li>
+          <li><a href="#0">Shopping tools</a></li>
+          <li><a href="#0">Contact Us</a></li>
+        </ul>
+      </nav> <!-- .primary-nav -->
+    </header> <!-- .auto-hide-header -->
 
     <main class="wrapper">
 

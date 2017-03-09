@@ -7,8 +7,8 @@
     "build": "run-s clean sass",
     "clean": "rimraf dist",
     "sass": "run-p sass-expanded sass-min",
-    "sass-expanded": "node-sass --output-style expanded src/ounce.scss dist/ounce.css",
-    "sass-min": "node-sass --output-style compressed src/ounce.scss dist/ounce.min.css",
+    "sass-expanded": "node-sass --include-path node_modules/bourbon/app/assets/stylesheets/ --output-style expanded src/scss/ounce.scss dist/ounce.css",
+    "sass-min": "node-sass --include-path node_modules/bourbon/app/assets/stylesheets/ --output-style compressed src/scss/ounce.scss dist/ounce.min.css",
     "serve": "serve ./",
     "start": "run-s clean sass serve"
   },
@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "bourbon": "^4.3.3",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",

@@ -176,6 +176,10 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bourbon@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/bourbon/-/bourbon-4.3.3.tgz#c51cb80c6a437aa55c16659597e5c4a86884ea38"
+
 boxen@1.0.0, boxen@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boxen/-/boxen-1.0.0.tgz#b2694baf1f605f708ff0177c12193b22f29aaaab"
