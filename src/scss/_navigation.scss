@@ -21,7 +21,7 @@ $secondary-nav-height: 70px;
   will-change: transform;
   transition: transform .5s;
 
-  &.is-hidden {
+  &.is-hidden:not(.nav-open) {
     transform: translateY(-100%);
   }
 
