@@ -1,0 +1,209 @@
+// header size
+$header-height-small: 60px;
+$header-height: 80px;
+
+$secondary-nav-height-small: 50px;
+$secondary-nav-height: 70px;
+
+
+.auto-hide-header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height-small;
+  background-color: $color-initial;
+  border-bottom: 1px solid $color-quaternary;
+  @include clearfix;
+  /* Force Hardware Acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+  transition: transform .5s;
+
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  @include MQ(L) {
+    height: $header-height;
+  }
+}
+
+.auto-hide-header .logo,
+.auto-hide-header .nav-trigger {
+  position: absolute;
+  @include center(y);
+}
+
+.auto-hide-header .logo {
+  left: 5%;
+
+  a, img {
+    display: block;
+  }
+}
+
+.auto-hide-header .nav-trigger {
+  /* vertically align its content */
+  display: table;
+  height: 100%;
+  padding: 0 1em;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: $color-primary;
+  font-weight: bold;
+  right: 0;
+
+  span {
+    /* vertically align inside parent element */
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  em, em::after, em::before {
+    /* this is the menu icon */
+    display: block;
+    position: relative;
+    height: 2px;
+    width: 22px;
+    background-color: $color-primary;
+    backface-visibility: hidden;
+  }
+
+  em {
+    /* this is the menu central line */
+    margin: 6px auto 14px;
+    transition: background-color .2s;
+  }
+
+  em::before, em::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    transition: transform .2s;
+  }
+
+  em::before {
+    /* this is the menu icon top line */
+    transform: translateY(-6px);
+  }
+
+  em::after {
+    /* this is the menu icon bottom line */
+    transform: translateY(6px);
+  }
+
+  @include MQ(L) {
+    display: none;
+  }
+}
+
+.auto-hide-header.nav-open .nav-trigger {
+  em {
+    /* transform menu icon into a 'X' icon */
+    background-color: rgba($color-initial, 0);
+  }
+
+  em::before {
+    /* rotate top line */
+    transform: rotate(-45deg);
+  }
+
+  em::after {
+    /* rotate bottom line */
+    transform: rotate(45deg);
+  }
+}
+
+.primary-nav {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  padding-right: 5%;
+
+  > ul {
+    position: absolute;
+    z-index: 2;
+    top: $header-height-small;
+    left: 0;
+    width: 100%;
+    background-color: $color-initial;
+    display: none;
+    box-shadow: 0 14px 20px rgba(#000, .2);
+    list-style-type: none;
+
+    a {
+      /* target primary-nav links */
+      display: block;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 5%;
+      color: $color-primary;
+      font-size: 1.8rem;
+      border-top: 1px solid shade($color-initial, 5%);
+
+      &:hover, &.active {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  @include MQ(L) {
+    /* vertically align its content */
+    display: table;
+
+    > ul {
+      /* vertically align inside parent element */
+      display: table-cell;
+      vertical-align: middle;
+      /* reset mobile style */
+      position: relative;
+      width: auto;
+      top: 0;
+      padding: 0;
+      @include clearfix;
+      background-color: transparent;
+      box-shadow: none;
+
+      li {
+        display: inline-block;
+        float: left;
+        margin-right: 1.5em;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+
+      a {
+        /* reset mobile style */
+        height: auto;
+        line-height: normal;
+        padding: 0;
+        border: none;
+      }
+    }
+  }
+}
+
+.nav-open .primary-nav ul,
+.primary-nav ul:target {
+  /*
+    show primary nav - mobile only
+    :target is used to show navigation on no-js devices
+  */
+  display: block;
+
+  @include MQ(L) {
+    display: table-cell;
+  }
+}
+
+main {
+  padding-top: calc(#{$header-height-small} + 2rem);
+
+  @include MQ(L) {
+    padding-top: calc(#{$header-height} + 5rem);
+  }
+}
